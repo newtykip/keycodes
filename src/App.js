@@ -1,28 +1,71 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
 
+import keyLocations from './keylocations'
+
+import Card from './components/Card/Card'
+
 class App extends Component {
+  state = {
+    key: null,
+    location: null,
+    locationFriendly: null,
+    which: null,
+    code: null
+  };
+
+  handleKeydown = e => {
+    if (!e.metaKey) e.preventDefault();
+
+    const key = e.keyCode;
+    const location = e.location;
+    const locationFriendly = keyLocations[location];
+    const which = e.which;
+    const code = e.code;
+
+    console.log(location)
+
+    this.setState({
+      key,
+      location,
+      locationFriendly,
+      which,
+      code
+    });
+
+    console.log(this.state.location);
+    console.log(this.state.locationFriendly)
+  }
+
+  componentDidMount() {
+    const body = document.querySelector('body');
+
+    body.addEventListener('keydown', this.handleKeydown);
+  }
+
   render() {
+    const { key, location, locationFriendly, which, code } = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        { key ? (
+          <h1>{ key }</h1>
+        ) : (
+          <div>
+            <h2>Welcome to keycodes...</h2>
+            <h1>Please press a key!</h1>
+          </div>
+        )}
+
+        <div className="cards">
+          <Card type="key" value={key} />
+          <Card type="location" value={location} friendly={locationFriendly} />
+          <Card type="which" value={which} />
+          <Card type="code" value={code} />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default App
