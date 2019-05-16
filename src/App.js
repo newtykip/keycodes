@@ -74,6 +74,10 @@ export default class App extends Component {
           <Card type="which" value={which} />
           <Card type="code" value={code} />
         </div>
+
+        <div class="social">
+          <a href="https://github.com/jsmiith/calculator" className="fa fa-github"></a>
+        </div>
       </div>
     );
   }
