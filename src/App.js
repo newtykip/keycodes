@@ -1,51 +1,62 @@
+// imports
 import React, { Component } from 'react'
-import './App.css';
 
-import keyLocations from './keylocations'
+// components
+import Card from './components/Card';
 
-import Card from './components/Card/Card'
+// keylocations
+const keyLocations = {
+  0: 'General keys',
+  1: 'Left-side modifier keys',
+  2: 'Right-side modifier keys',
+  3: 'Numpad',
+};
 
-class App extends Component {
-  state = {
-    key: null,
-    location: null,
-    locationFriendly: null,
-    which: null,
-    code: null
-  };
+export default class App extends Component {
+  constructor() {
+    super();
 
+    // setup the state
+    this.state = {
+      key: null,
+      location: null,
+      locationFriendly: null,
+      which: null,
+      code: null
+    };
+  }
+
+  // methods
   handleKeydown = e => {
+    // if it is not a meta key, prevent the default action
     if (!e.metaKey) e.preventDefault();
 
+    // get information about the key
     const key = e.keyCode;
     const location = e.location;
     const locationFriendly = keyLocations[location];
     const which = e.which;
     const code = e.code;
 
-    console.log(location)
-
-    this.setState({
+    // update the state
+    return this.setState({
       key,
       location,
       locationFriendly,
       which,
       code
     });
-
-    console.log(this.state.location);
-    console.log(this.state.locationFriendly)
   }
 
   componentDidMount() {
-    const body = document.querySelector('body');
-
-    body.addEventListener('keydown', this.handleKeydown);
+    return document.querySelector('body').addEventListener('keydown', this.handleKeydown);
   }
 
   render() {
+    // destructuring
     const { key, location, locationFriendly, which, code } = this.state;
 
+    // jsx
     return (
       <div>
         { key ? (
@@ -67,5 +78,3 @@ class App extends Component {
     );
   }
 }
-
-export default App

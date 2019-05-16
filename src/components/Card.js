@@ -1,13 +1,16 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable react/jsx-no-target-blank */
+/* eslint-disable jsx-a11y/anchor-has-content, react/jsx-no-target-blank */
 
-import React, { Component } from 'react'
-import './Card.css'
+// imports
+import React, { Component } from 'react';
+import './Card.css';
 
-class Card extends Component {
+// Card class
+export default class Card extends Component {
     render() {
+        // destructuring
         const { type, value, friendly } = this.props;
 
+        // jsx
         return value || friendly ? (
             <div className={`card item-${type}`}>
                 <div className="card-header">
@@ -21,5 +24,3 @@ class Card extends Component {
         ) : '';
     }
 }
-
-export default Card
