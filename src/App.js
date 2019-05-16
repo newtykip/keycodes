@@ -52,8 +52,8 @@ class App extends Component {
           <h1>{ key }</h1>
         ) : (
           <div>
-            <h2>Welcome to keycodes...</h2>
-            <h1>Please press a key!</h1>
+            <h3>Welcome to keycodes...</h3>
+            <h2>Please press a key!</h2>
           </div>
         )}
 

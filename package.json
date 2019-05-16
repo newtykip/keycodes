@@ -2,7 +2,7 @@
   "name": "keycodes",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://jsmiith.github.io/keycodes",
+  "homepage": "https://keycodes.jsmiith.xyz/",
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
