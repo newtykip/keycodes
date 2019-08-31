@@ -6,7 +6,8 @@
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "3.0.0",
+    "snyk": "^1.222.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,7 +16,9 @@
     "eject": "react-scripts eject",
     "clean": "rimraf build",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +32,6 @@
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "rimraf": "^2.6.3"
-  }
+  },
+  "snyk": true
 }
