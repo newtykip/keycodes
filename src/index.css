@@ -10,11 +10,7 @@ body {
 }
 
 h1 {
-  font-size: 150px;
-}
-
-h2 {
-  font-size: 75px;
+  font-size: 120px;
 }
 
 .cards {
@@ -26,7 +22,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Social*/ 
+/* Social*/
 a {
   text-decoration: none;
   color: #303030;

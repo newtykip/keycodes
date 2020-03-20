@@ -1,11 +1,8 @@
-// imports
 import React, { Component } from 'react'
-
-// components
 import Card from './components/Card';
 
-// keylocations
-const keyLocations = {
+// friendly key locations
+const KEY_LOCATIONS = {
   0: 'General keys',
   1: 'Left-side modifier keys',
   2: 'Right-side modifier keys',
@@ -16,7 +13,6 @@ export default class App extends Component {
   constructor() {
     super();
 
-    // setup the state
     this.state = {
       key: null,
       location: null,
@@ -26,30 +22,28 @@ export default class App extends Component {
     };
   }
 
-  // methods
-  handleKeydown = e => {
-    // if it is not a meta key, prevent the default action
-    if (!e.metaKey) e.preventDefault();
-
-    // get information about the key
-    const key = e.keyCode;
-    const location = e.location;
-    const locationFriendly = keyLocations[location];
-    const which = e.which;
-    const code = e.code;
-
-    // update the state
-    return this.setState({
-      key,
-      location,
-      locationFriendly,
-      which,
-      code
-    });
-  }
 
   componentDidMount() {
-    return document.querySelector('body').addEventListener('keydown', this.handleKeydown);
+    return document.onkeypress = e => {
+      // if it is not a meta key, prevent the default action
+      if (!e.metaKey) e.preventDefault();
+
+      // get information about the key
+      const key = e.keyCode;
+      const location = e.location;
+      const locationFriendly = KEY_LOCATIONS[location];
+      const which = e.which;
+      const code = e.code;
+
+      // update the state
+      return this.setState({
+        key,
+        location,
+        locationFriendly,
+        which,
+        code
+      });
+    };
   }
 
   render() {
@@ -59,14 +53,7 @@ export default class App extends Component {
     // jsx
     return (
       <div>
-        { key ? (
-          <h1>{ key }</h1>
-        ) : (
-          <div>
-            <h3>Welcome to keycodes...</h3>
-            <h2>Please press a key!</h2>
-          </div>
-        )}
+        <h1>{ key ? key : 'Please press a key!' }</h1>
 
         <div className="cards">
           <Card type="key" value={key} />
@@ -76,7 +63,7 @@ export default class App extends Component {
         </div>
 
         <div class="social">
-          <a href="https://github.com/jsmiith/calculator" className="fa fa-github"></a>
+          <a href="https://github.com/itsnewt/keycodes" className="fa fa-github"></a>
         </div>
       </div>
     );

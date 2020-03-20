@@ -1,6 +1,8 @@
+<img src="keyboard.jpg">
+
 # keycodes
 
-A simple web app which gets the keycode of whichever key you press on the keyboard.
+A simple web app that fetches information about any key that you press!
 
 ## Running locally
 
@@ -17,7 +19,7 @@ A simple web app which gets the keycode of whichever key you press on the keyboa
 ```
 
 3. Finally, you need to run the React development server!
-   
+
 ```bash
 > yarn start
 ```
